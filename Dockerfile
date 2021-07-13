@@ -2,10 +2,10 @@ version: '3.7'
 
 services:
    mysqldb:
-     image: ozgurozturknet/webdb
+     image: aytacyu/webdb
      environment:
-      MYSQL_DATABASE: proje
-      MYSQL_USER: projemaster
+      MYSQL_DATABASE: project
+      MYSQL_USER: projectmaster
       MYSQL_PASSWORD: master1234
       MYSQL_ROOT_PASSWORD: master1234
      networks:
@@ -14,7 +14,7 @@ services:
    websrv:
      depends_on:
        - mysqldb
-     image: ozgurozturknet/webkayit
+     image: aytacyu/websrv
      ports:
        - "80:80"
      restart: always
@@ -22,9 +22,9 @@ services:
        - webnet
      environment:
        DB_SERVER: mysqldb
-       DB_USERNAME: projemaster
+       DB_USERNAME: projectmaster
        DB_PASS: master1234
-       DB_NAME: proje
+       DB_NAME: project
 networks:
   webnet:
     driver: bridge
